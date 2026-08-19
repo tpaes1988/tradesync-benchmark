@@ -1,10 +1,11 @@
 ﻿from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+import os
 import json
 import time
 
 
-HOST = "127.0.0.1"
-PORT = 8765
+HOST = "0.0.0.0"
+PORT = int(os.environ.get("PORT", "8765"))
 
 
 class BenchmarkHandler(BaseHTTPRequestHandler):
@@ -81,3 +82,4 @@ if __name__ == "__main__":
     finally:
         servidor.server_close()
         print("Servidor encerrado.", flush=True)
+
